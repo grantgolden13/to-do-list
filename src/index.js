@@ -1,1 +1,3 @@
-alert('test4');
+import './style.css';
+
+alert('test7');
