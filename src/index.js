@@ -1,6 +1,6 @@
 import './style.css';
-import test from './test';
+import loadSite from './site';
 
-test;
+loadSite();
 
 alert('test7');
