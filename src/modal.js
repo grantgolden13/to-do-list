@@ -1,22 +1,4 @@
-const createModal = function() {
-    const modal = document.createElement('div');
-    modal.classList.add('modal');
-
-    const newProjectForm = document.createElement('form');
-    newProjectForm.classList.add('form');
-    newProjectForm.name = "new-project-form";
-    
-    const formTitle = document.createElement('div');
-    formTitle.textContent = "New Project";
-    
-    const nameInputLabel = document.createElement('label');
-    nameInputLabel.for = "name-input";
-    
-    const nameInput = document.createElement('input');
-    nameInput.id = "name-input";
-    nameInput.classList.add('input');
-    nameInput.placeholder = "Project Name";
-
+const createPrioritySelector = function() {
     const prioritySelectorLabel = document.createElement('label');
     prioritySelectorLabel.for = "priority-input";
     
@@ -39,7 +21,7 @@ const createModal = function() {
     const priorityOptionHigh = document.createElement('option');
     priorityOptionHigh.value = "high";
     priorityOptionHigh.textContent = "Ehh";
-    
+
     prioritySelector.appendChild(prioritySelectorPlaceholder);
     prioritySelector.appendChild(prioritySelectorPlaceholder);
     prioritySelector.appendChild(priorityOptionHigh);
@@ -47,31 +29,45 @@ const createModal = function() {
     prioritySelector.appendChild(priorityOptionHighest);
     prioritySelector.appendChild(prioritySelectorPlaceholder);
 
+    return prioritySelectorLabel, prioritySelector;
+}
+
+const createForm = function() {
+    const newProjectForm = document.createElement('form');
+    newProjectForm.classList.add('form');
+    newProjectForm.name = "new-project-form";
+    
+    const formTitle = document.createElement('div');
+    formTitle.textContent = "New Project";
+    
+    const nameInputLabel = document.createElement('label');
+    nameInputLabel.for = "name-input";
+    
+    const nameInput = document.createElement('input');
+    nameInput.id = "name-input";
+    nameInput.classList.add('input');
+    nameInput.placeholder = "Project Name";
+
     newProjectForm.appendChild(formTitle);
     newProjectForm.appendChild(nameInputLabel);
     newProjectForm.appendChild(nameInput);
-    newProjectForm.appendChild(prioritySelectorLabel);
-    newProjectForm.appendChild(prioritySelector);
+    newProjectForm.appendChild(createPrioritySelector());
 
-    modal.appendChild(newProjectForm);
-    modal.style.display = "block";
-
-    return modal;
+    return newProjectForm;
 }
 
-const addEvent = function() {
-    window.addEventListener('click', (e) => {
-        const modal = document.querySelector('.modal');
-        if (e.target == modal) {
-            modal.style.display = "none";
-        }
-    });
+const createModal = function() {
+    const modal = document.createElement('div');
+    modal.classList.add('modal');
+
+    modal.appendChild(createForm());
+
+    return modal;
 }
 
 const loadModal = function() {
     const content = document.getElementById('content');
     content.appendChild(createModal());
-    content.appendChild(addEvent());
 }
 
 export default loadModal;

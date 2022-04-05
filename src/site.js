@@ -1,9 +1,9 @@
 import loadHeader from './header';
+import loadModal from './modal';
 
 const loadSite = function() {
-    const content = document.getElementById('content');
-    content.appendChild(loadHeader());
-    content.appendChild(loadModal());
+    loadHeader();
+    loadModal();
 };
 
 export default loadSite;

@@ -1,11 +1,10 @@
-import loadModal from './modal';
+import promptModalEvent from './events';
 
 const createButton = function() {
     const btn = document.createElement('button');
     btn.textContent = "+ New Project";
-    btn.addEventListener('click', (e) => {
-        e.preventDefault;
-        loadModal();
+    btn.addEventListener('click', () => {
+        promptModalEvent();
     });
     return btn; 
 };
