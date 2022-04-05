@@ -1,8 +1,8 @@
 const promptModalEvent = function() {
+    const modal = document.querySelector('.modal');
+    modal.style.display = "block";
+    
     window.addEventListener('click', (e) => {
-        const modal = document.querySelector('.modal');
-        modal.style.display = "block";
-        
         if (e.target == modal) {
             modal.style.display = "none";
         }
