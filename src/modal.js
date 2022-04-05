@@ -1,6 +1,6 @@
 const createPrioritySelector = function() {
     const prioritySelectorLabel = document.createElement('label');
-    prioritySelectorLabel.for = "priority-input";
+    prioritySelectorLabel.setAttribute('for', 'priority-input');
     
     const prioritySelector = document.createElement('select');
     prioritySelector.id = "priority-input";
@@ -22,14 +22,13 @@ const createPrioritySelector = function() {
     priorityOptionHigh.value = "high";
     priorityOptionHigh.textContent = "Ehh";
 
-    prioritySelector.appendChild(prioritySelectorPlaceholder);
+    prioritySelector.appendChild(prioritySelectorLabel)
     prioritySelector.appendChild(prioritySelectorPlaceholder);
     prioritySelector.appendChild(priorityOptionHigh);
     prioritySelector.appendChild(priorityOptionHigher);
     prioritySelector.appendChild(priorityOptionHighest);
-    prioritySelector.appendChild(prioritySelectorPlaceholder);
 
-    return prioritySelectorLabel, prioritySelector;
+    return prioritySelector;
 }
 
 const createForm = function() {
@@ -41,7 +40,7 @@ const createForm = function() {
     formTitle.textContent = "New Project";
     
     const nameInputLabel = document.createElement('label');
-    nameInputLabel.for = "name-input";
+    nameInputLabel.setAttribute('for', 'name-input');
     
     const nameInput = document.createElement('input');
     nameInput.id = "name-input";
