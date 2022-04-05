@@ -1,5 +1,7 @@
 html {
     background-color: #D1DBEB;
+    min-width: 500px;
+    box-sizing: border-box;
 }
 
 header {
@@ -8,7 +10,11 @@ header {
     align-items: center;
 }
 
-body {
+h1 {
+    color: goldenrod;
+}
+
+#content {
     display: flex;
     flex-flow: column nowrap;
     margin: 0% 15%;
@@ -16,8 +22,12 @@ body {
 
 /* grid for the content div? */
 
-header > button {
-    height: 48px;
+.new-project-button {
+    flex: 0 1 140px;
+    height: 40px;
+    font-size: 1rem;
+    border: 2px solid goldenrod;
+    border-radius: 12px;
 }
 
 .modal {
@@ -35,9 +45,24 @@ header > button {
 .form {
     display: flex;
     flex-flow: column nowrap;
-    border: 2px solid black;
+    border: 2px solid goldenrod;
+    border-radius: 12px;
     justify-content: center;
-    margin: 10% 30%;
+    margin: 15% auto;
+    width: 420px;
     padding: 12px 12px 24px 12px;
     box-shadow: 2px rgba(0, 0, 0, 0.2);
+}
+
+.submit-btn {
+    font-size: 0.9rem;
+    flex: 0 1 32px;
+    width: 100px;
+    align-self: flex-end;
+    border: 1px solid goldenrod;
+    border-radius: 12px;
+}
+
+.form-child {
+    margin: 4px;
 }

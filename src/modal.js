@@ -4,7 +4,7 @@ const createPrioritySelector = function() {
     
     const prioritySelector = document.createElement('select');
     prioritySelector.id = "priority-input";
-    prioritySelector.classList.add('input');
+    prioritySelector.classList.add('input', 'form-child');
     
     const prioritySelectorPlaceholder = document.createElement('option');
     prioritySelectorPlaceholder.value = "";
@@ -31,6 +31,13 @@ const createPrioritySelector = function() {
     return prioritySelector;
 }
 
+const createSubmitBtn = function() {
+    const submitBtn = document.createElement('button');
+    submitBtn.textContent = "Create";
+    submitBtn.classList.add('submit-btn', 'form-child');
+    return submitBtn;
+}
+
 const createForm = function() {
     const newProjectForm = document.createElement('form');
     newProjectForm.classList.add('form');
@@ -38,19 +45,21 @@ const createForm = function() {
     
     const formTitle = document.createElement('div');
     formTitle.textContent = "New Project";
+    formTitle.classList.add('form-child');
     
     const nameInputLabel = document.createElement('label');
     nameInputLabel.setAttribute('for', 'name-input');
     
     const nameInput = document.createElement('input');
     nameInput.id = "name-input";
-    nameInput.classList.add('input');
+    nameInput.classList.add('input', 'form-child');
     nameInput.placeholder = "Project Name";
 
     newProjectForm.appendChild(formTitle);
     newProjectForm.appendChild(nameInputLabel);
     newProjectForm.appendChild(nameInput);
     newProjectForm.appendChild(createPrioritySelector());
+    newProjectForm.appendChild(createSubmitBtn());
 
     return newProjectForm;
 }

@@ -1,12 +1,13 @@
 import promptModalEvent from './events';
 
 const createButton = function() {
-    const btn = document.createElement('button');
-    btn.textContent = "+ New Project";
-    btn.addEventListener('click', () => {
+    const newProjectButton = document.createElement('button');
+    newProjectButton.textContent = "+ New Project";
+    newProjectButton.classList.add('new-project-button');
+    newProjectButton.addEventListener('click', () => {
         promptModalEvent();
     });
-    return btn; 
+    return newProjectButton; 
 };
 
 const createHeader = function() {
