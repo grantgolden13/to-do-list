@@ -61,7 +61,7 @@ const createModal = function() {
 
 const addEvent = function() {
     window.addEventListener('click', (e) => {
-        const modal = document.getElementsByClassName('modal');
+        const modal = document.querySelector('.modal');
         if (e.target == modal) {
             modal.style.display = "none";
         }
