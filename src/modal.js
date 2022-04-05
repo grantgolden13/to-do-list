@@ -1,6 +1,4 @@
-const loadModal = function() {
-    const content = document.getElementById('content');
-
+const createModal = function() {
     const modal = document.createElement('div');
     modal.classList.add('modal');
 
@@ -58,7 +56,22 @@ const loadModal = function() {
     modal.appendChild(newProjectForm);
     modal.style.display = "block";
 
-    content.appendChild(modal);
+    return modal;
+}
+
+const addEvent = function() {
+    window.addEventListener('click', (e) => {
+        const modal = document.getElementsByClassName('modal');
+        if (e.target == modal) {
+            modal.style.display = "none";
+        }
+    });
+}
+
+const loadModal = function() {
+    const content = document.getElementById('content');
+    content.appendChild(createModal());
+    content.appendChild(addEvent());
 }
 
 export default loadModal;

@@ -10,7 +10,6 @@ const createButton = function() {
     return btn; 
 };
 
-
 const createHeader = function() {
     const header = document.createElement('header');
     const h1 = document.createElement('h1');
