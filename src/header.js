@@ -1,11 +1,11 @@
-import promptModalEvent from './events';
+import { promptModal } from './events';
 
 const createButton = function() {
     const newProjectButton = document.createElement('button');
     newProjectButton.textContent = "+ New Project";
     newProjectButton.classList.add('new-project-button');
     newProjectButton.addEventListener('click', () => {
-        promptModalEvent();
+        promptModal();
     });
     return newProjectButton; 
 };

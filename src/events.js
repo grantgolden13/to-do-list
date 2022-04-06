@@ -1,4 +1,4 @@
-const promptModalEvent = function() {
+const promptModal = function() {
     const modal = document.querySelector('.modal');
     modal.style.display = "block";
 
@@ -9,4 +9,11 @@ const promptModalEvent = function() {
     });
 };
 
-export default promptModalEvent;
+const createNewProject = function() {
+    const projectName = document.getElementById('name-input').value;
+    const projectPriority = document.getElementById('priority-input').value;
+    const projectDueDate = document.getElementById('due-date-input').value;
+    console.log(projectName, projectPriority, projectDueDate);
+}
+
+export { promptModal, createNewProject };

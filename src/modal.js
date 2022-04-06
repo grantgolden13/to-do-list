@@ -1,3 +1,5 @@
+import { createNewProject } from './events'
+
 const createPrioritySelector = function() {
     const prioritySelectorLabel = document.createElement('label');
     prioritySelectorLabel.setAttribute('for', 'priority-input');
@@ -40,7 +42,7 @@ const createDueDateField = function() {
     dueDateLabel.setAttribute('for', 'due-date-selector');
 
     const dueDate = document.createElement('input');
-    dueDate.id = "due-date-selector";
+    dueDate.id = "due-date-input";
     dueDate.type = "date";
 
     var today = new Date();
@@ -64,13 +66,15 @@ const createDueDateField = function() {
 }
 
 const createSubmitBtn = function() {
-    const submitBtn = document.createElement('button');
-    submitBtn.textContent = "Create";
+    const submitBtn = document.createElement('input');
+    submitBtn.type = "submit";
+    submitBtn.value = "Create";
     submitBtn.classList.add('submit-btn', 'form-child');
-    submitBtn.addEventListener('click', () => {
+    submitBtn.addEventListener('click', (e) => {
         // should just be a function call. write the function wherever 
         // the constructor/factory is OR in events.js
-        alert('submitted');
+        e.preventDefault();
+        createNewProject();
     });
     return submitBtn;
 }
