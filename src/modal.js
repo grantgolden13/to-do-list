@@ -31,10 +31,47 @@ const createPrioritySelector = function() {
     return prioritySelector;
 }
 
+const createDueDateField = function() {
+    const dateContainerDiv = document.createElement('div');
+    dateContainerDiv.classList.add('form-child', 'date-container-div');
+
+    const dueDateLabel = document.createElement('label');
+    dueDateLabel.textContent = "Due Date:";
+    dueDateLabel.setAttribute('for', 'due-date-selector');
+
+    const dueDate = document.createElement('input');
+    dueDate.id = "due-date-selector";
+    dueDate.type = "date";
+
+    var today = new Date();
+    var dd = today.getDate();
+    var mm = today.getMonth() + 1;
+    var yyyy = today.getFullYear();
+    if (dd < 10) {
+        dd = '0' + dd;
+    }
+    if (mm < 10) {
+        mm = '0' + mm; 
+    }
+    const todayFormatted = yyyy + '-' + mm + '-' + dd;
+    dueDate.setAttribute('min',`${todayFormatted}`)
+    dueDate.setAttribute('max', '2023-12-24');
+
+    dateContainerDiv.appendChild(dueDateLabel);
+    dateContainerDiv.appendChild(dueDate);
+
+    return dateContainerDiv;
+}
+
 const createSubmitBtn = function() {
     const submitBtn = document.createElement('button');
     submitBtn.textContent = "Create";
     submitBtn.classList.add('submit-btn', 'form-child');
+    submitBtn.addEventListener('click', () => {
+        // should just be a function call. write the function wherever 
+        // the constructor/factory is OR in events.js
+        alert('submitted');
+    });
     return submitBtn;
 }
 
@@ -53,12 +90,13 @@ const createForm = function() {
     const nameInput = document.createElement('input');
     nameInput.id = "name-input";
     nameInput.classList.add('input', 'form-child');
-    nameInput.placeholder = "Project Name";
+    nameInput.placeholder = "New Project Name";
 
     newProjectForm.appendChild(formTitle);
     newProjectForm.appendChild(nameInputLabel);
     newProjectForm.appendChild(nameInput);
     newProjectForm.appendChild(createPrioritySelector());
+    newProjectForm.appendChild(createDueDateField());
     newProjectForm.appendChild(createSubmitBtn());
 
     return newProjectForm;
