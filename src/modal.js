@@ -46,16 +46,20 @@ const createDueDateField = function() {
     dueDate.type = "date";
 
     var today = new Date();
-    var dd = today.getDate();
-    var mm = today.getMonth() + 1;
-    var yyyy = today.getFullYear();
-    if (dd < 10) {
-        dd = '0' + dd;
+
+    // format the date so HTML tag will properly read
+    var date = today.getDate();
+    var month = today.getMonth() + 1;
+    var year = today.getFullYear();
+
+    if (date < 10) {
+        date = '0' + date;
     }
-    if (mm < 10) {
-        mm = '0' + mm; 
+    if (month < 10) {
+        month = '0' + month; 
     }
-    const todayFormatted = yyyy + '-' + mm + '-' + dd;
+
+    const todayFormatted = year + '-' + month + '-' + date;
     dueDate.setAttribute('min',`${todayFormatted}`)
     dueDate.setAttribute('max', '2023-12-24');
 
@@ -71,10 +75,9 @@ const createSubmitBtn = function() {
     submitBtn.value = "Create";
     submitBtn.classList.add('submit-btn', 'form-child');
     submitBtn.addEventListener('click', (e) => {
-        // should just be a function call. write the function wherever 
-        // the constructor/factory is OR in events.js
         e.preventDefault();
         createNewProject();
+        // need function that clears inputs
     });
     return submitBtn;
 }
