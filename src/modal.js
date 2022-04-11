@@ -69,6 +69,17 @@ const createDueDateField = function() {
     return dateContainerDiv;
 }
 
+const clearForm = function() {
+    const inputs = document.querySelectorAll('input', 'select');
+    // remove the button from this nodelist
+    const inputsArray = Array.from(inputs);
+    inputsArray.pop();
+    inputsArray.forEach(input => {
+        input.value = "";
+    });
+    document.querySelector('.modal').style.display = "none";
+}
+
 const createSubmitBtn = function() {
     const submitBtn = document.createElement('input');
     submitBtn.type = "submit";
@@ -78,6 +89,7 @@ const createSubmitBtn = function() {
         e.preventDefault();
         createNewProject();
         // need function that clears inputs
+        clearForm();
     });
     return submitBtn;
 }

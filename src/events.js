@@ -21,7 +21,6 @@ const createNewProject = function() {
 
     projects.push(newProject);
     console.log(newProject);
-    console.log(projects.length);
 }
 
 export { promptModal, createNewProject };
