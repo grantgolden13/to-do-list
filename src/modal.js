@@ -45,9 +45,12 @@ const createDueDateField = function() {
     dueDate.id = "due-date-input";
     dueDate.type = "date";
 
+    // turn this into its own function or module
+
     var today = new Date();
 
     // format the date so HTML tag will properly read
+    
     var date = today.getDate();
     var month = today.getMonth() + 1;
     var year = today.getFullYear();
@@ -71,9 +74,11 @@ const createDueDateField = function() {
 
 const clearForm = function() {
     const inputs = document.querySelectorAll('input', 'select');
-    // remove the button from this nodelist
+
+    // remove the Clear button from this nodelist so we don't clear its text
     const inputsArray = Array.from(inputs);
     inputsArray.pop();
+
     inputsArray.forEach(input => {
         input.value = "";
     });
@@ -88,7 +93,6 @@ const createSubmitBtn = function() {
     submitBtn.addEventListener('click', (e) => {
         e.preventDefault();
         createNewProject();
-        // need function that clears inputs
         clearForm();
     });
     return submitBtn;
@@ -107,6 +111,7 @@ const createForm = function() {
     nameInputLabel.setAttribute('for', 'name-input');
     
     const nameInput = document.createElement('input');
+    nameInput.type = "text";
     nameInput.id = "name-input";
     nameInput.classList.add('input', 'form-child');
     nameInput.placeholder = "New Project Name";

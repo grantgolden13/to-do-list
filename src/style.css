@@ -17,10 +17,28 @@ h1 {
 #content {
     display: flex;
     flex-flow: column nowrap;
-    margin: 0% 13%;
+    margin: 0% 7%;
 }
 
-/* grid for the content div? */
+.project-grid {
+    display: grid;
+    grid-template-columns: 300px 300px 300px;
+    grid-template-rows: 300px 300px 300px;
+}
+
+.projects {
+    display: flex;
+    justify-content: center;
+    border: 1px solid goldenrod;
+    border-radius: 8px;
+    margin: 4px;
+}
+
+.projects > h2,
+.projects > h3 {
+    display: block;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
 
 .new-project-button {
     flex: 0 1 140px;
