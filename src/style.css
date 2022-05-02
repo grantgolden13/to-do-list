@@ -22,13 +22,13 @@ h1 {
 
 .project-grid {
     display: grid;
-    grid-template-columns: 300px 300px 300px;
+    grid-template-columns: 400px 400px 400px;
     grid-template-rows: 300px 300px 300px;
 }
 
 .projects {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     border: 1px solid goldenrod;
     border-radius: 8px;
     margin: 4px;
@@ -37,6 +37,8 @@ h1 {
 .projects > h2,
 .projects > h3 {
     display: block;
+    max-height: 20px;
+    margin: 10px 20px;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
@@ -99,4 +101,16 @@ form > div {
  .date-container-div > input {
     font-size: 1.1rem;
     margin: 0px 24px;
+}
+
+.green {
+    border: 3px dotted green;
+}
+
+.yellow {
+    border: 3px dotted darkgoldenrod;
+}
+
+.red {
+    border: 3px dotted red;
 }
