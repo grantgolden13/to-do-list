@@ -6,6 +6,18 @@ const Project = function Project(name, priority, dueDate) {
     this.dueDate = dueDate;
 }
 
+const createDeleteBtn = function() {
+    const deleteBtn = document.createElement('button');
+    deleteBtn.type = "button";
+    deleteBtn.value = "Delete";
+    deleteBtn.textContent = "Delete";
+    deleteBtn.classList.add('delete-btn');
+    deleteBtn.addEventListener('click', () => {
+        alert('deleted');
+    });
+    return deleteBtn;
+}
+
 const createDefaultProject = function() {
     const defaultProjectObj = new Project("default project", "high", "2022-04-20");
     projects.push(defaultProjectObj);
@@ -39,6 +51,7 @@ const renderProjectsToDOM = function() {
     
         newProjectElem.appendChild(projectName);
         newProjectElem.appendChild(projectDueDate);
+        newProjectElem.appendChild(createDeleteBtn());
     
         projectGrid.appendChild(newProjectElem);    
     });

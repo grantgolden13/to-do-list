@@ -114,3 +114,13 @@ form > div {
 .red {
     border: 3px dotted red;
 }
+
+.delete-btn {
+    flex: 0 0 64px;
+    height: 32px;
+    align-self: flex-end;
+    background-color: red;
+    color: white;
+    border-radius: 9px;
+    border: 2px solid black;
+}
