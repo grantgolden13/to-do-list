@@ -14,15 +14,15 @@ const createPrioritySelector = function() {
     
     const priorityOptionHighest = document.createElement('option');
     priorityOptionHighest.value = "highest";
-    priorityOptionHighest.textContent = "CRUCIAL";
+    priorityOptionHighest.textContent = "Highest";
     
     const priorityOptionHigher = document.createElement('option');
     priorityOptionHigher.value = "higher";
-    priorityOptionHigher.textContent = "Important";
+    priorityOptionHigher.textContent = "Higher";
     
     const priorityOptionHigh = document.createElement('option');
     priorityOptionHigh.value = "high";
-    priorityOptionHigh.textContent = "Ehh";
+    priorityOptionHigh.textContent = "High";
 
     prioritySelector.appendChild(prioritySelectorLabel)
     prioritySelector.appendChild(prioritySelectorPlaceholder);

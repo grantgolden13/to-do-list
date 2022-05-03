@@ -17,9 +17,8 @@ h1 {
 #content {
     display: flex;
     flex-flow: column nowrap;
-    margin: 0% 7%;
+    margin: 0% 5%;
 }
-
 
 .new-project-button {
     flex: 0 1 140px;
@@ -30,7 +29,8 @@ h1 {
     border-radius: 12px;
 }
 
-.new-project-button:hover {
+.new-project-button:hover,
+.delete-btn:hover {
     transform: scale(1.05);
 }
 
