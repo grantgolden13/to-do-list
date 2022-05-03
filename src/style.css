@@ -20,27 +20,6 @@ h1 {
     margin: 0% 7%;
 }
 
-.project-grid {
-    display: grid;
-    grid-template-columns: 400px 400px 400px;
-    grid-template-rows: 300px 300px 300px;
-}
-
-.projects {
-    display: flex;
-    justify-content: space-between;
-    border: 1px solid goldenrod;
-    border-radius: 8px;
-    margin: 4px;
-}
-
-.projects > h2,
-.projects > h3 {
-    display: block;
-    max-height: 20px;
-    margin: 10px 20px;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-}
 
 .new-project-button {
     flex: 0 1 140px;
@@ -103,16 +82,44 @@ form > div {
     margin: 0px 24px;
 }
 
+.project-grid {
+    display: grid;
+    grid-template-columns: 400px 400px 400px;
+    grid-template-rows: 300px 300px 300px;
+}
+
+.projects {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: space-between;
+    border: 1px solid goldenrod;
+    border-radius: 8px;
+    margin: 4px;
+}
+
+.projects > header {
+    display: flex;
+    justify-content: space-between;
+    max-height: 20px;
+    margin: 10px 20px;
+}
+
+header > h2,
+header > h3 {
+    display: block;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
 .green {
-    border: 3px dotted green;
+    border: 3px solid green;
 }
 
 .yellow {
-    border: 3px dotted darkgoldenrod;
+    border: 3px solid darkgoldenrod;
 }
 
 .red {
-    border: 3px dotted red;
+    border: 3px solid red;
 }
 
 .delete-btn {
@@ -123,4 +130,8 @@ form > div {
     color: white;
     border-radius: 9px;
     border: 2px solid black;
+}
+
+.delete-btn-container {
+    margin: 10px
 }

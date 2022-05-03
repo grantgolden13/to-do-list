@@ -7,19 +7,22 @@ const Project = function Project(name, priority, dueDate) {
 }
 
 const createDeleteBtn = function() {
+    const deleteBtnDiv = document.createElement('div');
+    deleteBtnDiv.classList.add('delete-btn-container');
     const deleteBtn = document.createElement('button');
     deleteBtn.type = "button";
     deleteBtn.value = "Delete";
-    deleteBtn.textContent = "Delete";
+    deleteBtn.textContent = "Delete Project";
     deleteBtn.classList.add('delete-btn');
     deleteBtn.addEventListener('click', () => {
         alert('deleted');
     });
-    return deleteBtn;
+    deleteBtnDiv.appendChild(deleteBtn);
+    return deleteBtnDiv;
 }
 
 const createDefaultProject = function() {
-    const defaultProjectObj = new Project("default project", "high", "2022-04-20");
+    const defaultProjectObj = new Project("my first project", "high", "2023-04-20");
     projects.push(defaultProjectObj);
 }
 
@@ -35,9 +38,13 @@ const renderProjectsToDOM = function() {
     projects.forEach(project => {
         const newProjectElem = document.createElement('div');
         newProjectElem.classList.add('projects');
-    
+
+        const projectHeader = document.createElement('header');
+        projectHeader.classList.add('project-header');
+
         const projectName = document.createElement('h2');
         projectName.textContent = project.name;
+
         const projectPriority = project.priority;
         if (projectPriority == "high") {
             newProjectElem.classList.add('green');
@@ -46,11 +53,17 @@ const renderProjectsToDOM = function() {
         } else if (projectPriority == "highest") {
             newProjectElem.classList.add('red');
         }
+
         const projectDueDate = document.createElement('h3');
         projectDueDate.textContent = project.dueDate;
+
+        const projectTodosContainer = document.createElement('div');
+        projectTodosContainer.classList.add('todos-container');
     
-        newProjectElem.appendChild(projectName);
-        newProjectElem.appendChild(projectDueDate);
+        projectHeader.appendChild(projectName);
+        projectHeader.appendChild(projectDueDate);
+
+        newProjectElem.appendChild(projectHeader);
         newProjectElem.appendChild(createDeleteBtn());
     
         projectGrid.appendChild(newProjectElem);    
