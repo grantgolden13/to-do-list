@@ -11,11 +11,14 @@ const createDeleteBtn = function() {
     deleteBtnDiv.classList.add('delete-btn-container');
     const deleteBtn = document.createElement('button');
     deleteBtn.type = "button";
-    deleteBtn.value = "Delete";
+    deleteBtn.value = "Delete Project";
     deleteBtn.textContent = "Delete Project";
     deleteBtn.classList.add('delete-btn');
-    deleteBtn.addEventListener('click', () => {
-        alert('deleted');
+    deleteBtn.addEventListener('click', (e) => {
+        const projectToDelete = e.target.parentElement.parentElement;
+        const index = projects.indexOf(projectToDelete);
+        projects.splice(index, 1);
+        projectToDelete.remove();
     });
     deleteBtnDiv.appendChild(deleteBtn);
     return deleteBtnDiv;
