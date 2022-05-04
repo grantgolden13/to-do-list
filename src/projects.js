@@ -1,9 +1,47 @@
+const content = document.getElementById('content');
 const projects = [];
 
 const Project = function Project(name, priority, dueDate) {
     this.name = name;
     this.priority = priority;
     this.dueDate = dueDate;
+}
+
+const createDeleteAlert = function(elem) {
+    const alertModal = document.createElement('div');
+    alertModal.classList.add('alert-modal');
+
+    const alertContainer = document.createElement('div');
+    alertContainer.classList.add('alert-container');
+
+    const alerth1 = document.createElement('h1');
+    alerth1.textContent = "Caution";
+
+    const alertp = document.createElement('p');
+    alertp.textContent = "Are you sure you want to delete this project? This action cannot be undone.";
+
+    const cancelButton = document.createElement('button');
+    cancelButton.textContent = "Cancel";
+    cancelButton.addEventListener('click', (e) => {
+        e.target.parentElement.style.display = "none";
+    });
+
+    const deleteButton = document.createElement('button');
+    deleteButton.id = "deleteProject";
+    deleteButton.textContent = "Delete Project";
+    deleteButton.addEventListener('click', (e) => {
+        const index = projects.indexOf(elem);
+        projects.splice(index, 1);
+        elem.remove();
+        e.target.parentElement.style.display = "none";
+    })
+
+    alertContainer.appendChild(alerth1);
+    alertContainer.appendChild(alertp);
+    alertContainer.appendChild(cancelButton);
+    alertContainer.appendChild(deleteButton);
+    
+    content.appendChild(alertContainer);
 }
 
 const createDeleteBtn = function() {
@@ -16,9 +54,7 @@ const createDeleteBtn = function() {
     deleteBtn.classList.add('delete-btn');
     deleteBtn.addEventListener('click', (e) => {
         const projectToDelete = e.target.parentElement.parentElement;
-        const index = projects.indexOf(projectToDelete);
-        projects.splice(index, 1);
-        projectToDelete.remove();
+        createDeleteAlert(projectToDelete);
     });
     deleteBtnDiv.appendChild(deleteBtn);
     return deleteBtnDiv;
@@ -74,7 +110,6 @@ const renderProjectsToDOM = function() {
 }
 
 const loadProjects = function() {
-    const content = document.getElementById('content');
 
     const projectGrid = document.createElement('div');
     projectGrid.classList.add('project-grid');
