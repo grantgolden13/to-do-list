@@ -9,7 +9,6 @@ const createPrioritySelector = function() {
     prioritySelector.classList.add('input', 'form-child');
     
     const prioritySelectorPlaceholder = document.createElement('option');
-    prioritySelectorPlaceholder.value = "";
     prioritySelectorPlaceholder.textContent = "Priority Level";
     
     const priorityOptionHighest = document.createElement('option');
@@ -86,9 +85,9 @@ const clearForm = function() {
 }
 
 const createSubmitBtn = function() {
-    const submitBtn = document.createElement('input');
+    const submitBtn = document.createElement('button');
     submitBtn.type = "submit";
-    submitBtn.value = "Create";
+    submitBtn.textContent = "Create";
     submitBtn.classList.add('submit-btn', 'form-child');
     submitBtn.addEventListener('click', (e) => {
         e.preventDefault();
@@ -102,6 +101,9 @@ const createForm = function() {
     const newProjectForm = document.createElement('form');
     newProjectForm.classList.add('form');
     newProjectForm.name = "new-project-form";
+    newProjectForm.action = "#";
+    newProjectForm.method = "POST";
+    newProjectForm.id = "new-project-form"
     
     const formTitle = document.createElement('div');
     formTitle.textContent = "New Project";
@@ -115,6 +117,7 @@ const createForm = function() {
     nameInput.id = "name-input";
     nameInput.classList.add('input', 'form-child');
     nameInput.placeholder = "New Project Name";
+    nameInput.required = "required";
 
     newProjectForm.appendChild(formTitle);
     newProjectForm.appendChild(nameInputLabel);

@@ -9,21 +9,25 @@ const Project = function Project(name, priority, dueDate) {
 
 const createDeleteAlert = function(elem) {
     const alertModal = document.createElement('div');
-    alertModal.classList.add('alert-modal');
+    alertModal.classList.add('delete-modal');
 
     const alertContainer = document.createElement('div');
     alertContainer.classList.add('alert-container');
 
     const alerth1 = document.createElement('h1');
-    alerth1.textContent = "Caution";
+    alerth1.textContent = "CAUTION";
 
     const alertp = document.createElement('p');
     alertp.textContent = "Are you sure you want to delete this project? This action cannot be undone.";
 
+    const buttonContainer = document.createElement('div');
+    buttonContainer.classList.add('btn-container');
+
     const cancelButton = document.createElement('button');
+    cancelButton.id = "cancelDelete";
     cancelButton.textContent = "Cancel";
     cancelButton.addEventListener('click', (e) => {
-        e.target.parentElement.style.display = "none";
+        e.target.parentElement.parentElement.parentElement.style.display = "none";
     });
 
     const deleteButton = document.createElement('button');
@@ -33,15 +37,19 @@ const createDeleteAlert = function(elem) {
         const index = projects.indexOf(elem);
         projects.splice(index, 1);
         elem.remove();
-        e.target.parentElement.style.display = "none";
-    })
+        e.target.parentElement.parentElement.parentElement.style.display = "none";
+    });
+
+    buttonContainer.appendChild(cancelButton);
+    buttonContainer.appendChild(deleteButton);
 
     alertContainer.appendChild(alerth1);
     alertContainer.appendChild(alertp);
-    alertContainer.appendChild(cancelButton);
-    alertContainer.appendChild(deleteButton);
+    alertContainer.appendChild(buttonContainer);
+
+    alertModal.appendChild(alertContainer);
     
-    content.appendChild(alertContainer);
+    content.appendChild(alertModal);
 }
 
 const createDeleteBtn = function() {
