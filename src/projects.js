@@ -57,8 +57,8 @@ const createDeleteBtn = function() {
     deleteBtnDiv.classList.add('delete-btn-container');
     const deleteBtn = document.createElement('button');
     deleteBtn.type = "button";
-    deleteBtn.value = "Delete Project";
-    deleteBtn.textContent = "Delete Project";
+    deleteBtn.value = "Delete";
+    deleteBtn.textContent = "Delete";
     deleteBtn.classList.add('delete-btn');
     deleteBtn.addEventListener('click', (e) => {
         const projectToDelete = e.target.parentElement.parentElement;
