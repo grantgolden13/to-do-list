@@ -5,6 +5,7 @@ const Project = function Project(name, priority, dueDate) {
     this.name = name;
     this.priority = priority;
     this.dueDate = dueDate;
+    this.todos = [];
 }
 
 const createDeleteAlert = function(elem) {
@@ -52,20 +53,32 @@ const createDeleteAlert = function(elem) {
     content.appendChild(alertModal);
 }
 
-const createDeleteBtn = function() {
-    const deleteBtnDiv = document.createElement('div');
-    deleteBtnDiv.classList.add('delete-btn-container');
+const createProjectButtons = function() {
+    const buttonContainerDiv = document.createElement('div');
+    buttonContainerDiv.classList.add('project-btn-container');
+
     const deleteBtn = document.createElement('button');
+    deleteBtn.classList.add('delete-btn');
     deleteBtn.type = "button";
     deleteBtn.value = "Delete";
     deleteBtn.textContent = "Delete";
-    deleteBtn.classList.add('delete-btn');
     deleteBtn.addEventListener('click', (e) => {
         const projectToDelete = e.target.parentElement.parentElement;
         createDeleteAlert(projectToDelete);
     });
-    deleteBtnDiv.appendChild(deleteBtn);
-    return deleteBtnDiv;
+
+    const todoButton = document.createElement('button');
+    todoButton.classList.add('add-todo-btn');
+    todoButton.value = "Add Todo";
+    todoButton.textContent = "New To Do";
+    todoButton.addEventListener('click', () => {
+
+    });
+
+    buttonContainerDiv.appendChild(deleteBtn);
+    buttonContainerDiv.appendChild(todoButton);
+
+    return buttonContainerDiv;
 }
 
 const createDefaultProject = function() {
@@ -96,7 +109,7 @@ const renderProjectsToDOM = function() {
         if (projectPriority == "high") {
             newProjectElem.classList.add('green');
         } else if (projectPriority == "higher") {
-            newProjectElem.classList.add('yellow');
+            newProjectElem.classList.add('gold');
         } else if (projectPriority == "highest") {
             newProjectElem.classList.add('red');
         }
@@ -111,8 +124,17 @@ const renderProjectsToDOM = function() {
         projectHeader.appendChild(projectDueDate);
 
         newProjectElem.appendChild(projectHeader);
-        newProjectElem.appendChild(createDeleteBtn());
+        newProjectElem.appendChild(createProjectButtons());
+
     
+        newProjectElem.addEventListener('click', () => {
+            
+            // open an editor (form) in the middle of the screen like google keep
+            // use textareas? for the temporary title and details/notes section
+            // use date picker input for the date
+            // allow for adding To Dos ???
+        })
+
         projectGrid.appendChild(newProjectElem);    
     });
 }

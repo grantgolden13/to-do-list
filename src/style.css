@@ -32,7 +32,8 @@ h1 {
 .new-project-button:hover,
 .delete-btn:hover,
 #deleteProject:hover,
-#cancelDelete:hover {
+#cancelDelete:hover,
+.add-todo-btn:hover {
     transform: scale(1.08);
 }
 
@@ -124,7 +125,7 @@ header > h3 {
     border: 3px solid green;
 }
 
-.yellow {
+.gold {
     border: 3px solid darkgoldenrod;
 }
 
@@ -142,7 +143,9 @@ header > h3 {
     border: 2px solid black;
 }
 
-.delete-btn-container {
+.project-btn-container {
+    display: flex;
+    justify-content: space-between;
     margin: 10px
 }
 
@@ -188,8 +191,8 @@ header > h3 {
     justify-content: space-between;
 }
 
-.btn-container > button {
-    border: 2px solid goldenrod;
+.delete-btn,
+.add-todo-btn {
     border-radius: 12px;
     height: 32px;
     padding: 4px;
@@ -200,3 +203,7 @@ header > h3 {
     border: 2px solid black;
     background-color: red;
 }
+
+.add-todo-btn {
+    border: 2px solid goldenrod;
+} 
