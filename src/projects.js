@@ -53,15 +53,16 @@ const newTodoModal = function() {
     cancelTodoButton.classList.add('cancel-todo');
     cancelTodoButton.textContent = "Cancel";
     cancelTodoButton.addEventListener('click', (e) => {
-        e.target.parentElement.parentElement.parentElement.style.display = "none";
+        e.target.parentElement.parentElement.parentElement.remove();
     });
 
     const addTodoButton = document.createElement('button');
     addTodoButton.classList.add('add-todo');
     addTodoButton.textContent = "Save";
     addTodoButton.addEventListener('click', (e) => {
-        //buncha shit has to happen
-        e.target.parentElement.parentElement.parentElement.style.display = "none";
+        // buncha shit has to happen
+        // need todo constructor like projects
+        e.target.parentElement.parentElement.parentElement.remove();
     });
 
     todoButtonContainer.appendChild(cancelTodoButton);

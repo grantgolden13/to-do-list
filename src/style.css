@@ -29,7 +29,8 @@ h1 {
 .new-project-button,
 #cancelDelete,
 .add-todo-btn,
-.cancel-todo {
+.cancel-todo,
+.add-todo {
     border: 2px solid goldenrod;
     color: black;
     border-radius: 12px;
