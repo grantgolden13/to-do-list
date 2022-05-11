@@ -5,7 +5,82 @@ const Project = function Project(name, priority, dueDate) {
     this.name = name;
     this.priority = priority;
     this.dueDate = dueDate;
-    this.todos = [];
+}
+
+const newTodoModal = function() {
+    const todoModal = document.createElement('div');
+    todoModal.classList.add('todo-modal');
+
+    const newTodoContainer = document.createElement('div');
+    newTodoContainer.classList.add('todo-container');
+
+    const newTodoHeading = document.createElement('h1');
+    newTodoHeading.textContent = "New ToDo Item";
+
+    const newTodoForm = document.createElement('form');
+    newTodoForm.classList.add('todo-form');
+    newTodoForm.name = "new-todo-form";
+    newTodoForm.method = "post";
+    newTodoForm.action = "#";
+
+    const newTodoNameLabel = document.createElement('label');
+    newTodoNameLabel.textContent = "Item:";
+    newTodoNameLabel.for = "new-todo-name";
+
+    const newTodoName = document.createElement('input');
+    newTodoName.id = "new-todo-name";
+    newTodoName.placeholder = "'wash the dishes'";
+
+    const newTodoDetailsLabel = document.createElement('label');
+    newTodoDetailsLabel.textContent = "Details/Notes:"
+    newTodoDetailsLabel.for = "new-todo-details";
+    
+    const newTodoDetails = document.createElement('textarea');
+    newTodoDetails.id = "new-todo-details";
+
+    const newTodoDueDateLabel = document.createElement('label');
+    newTodoDueDateLabel.textContent = "Due Date:";
+    newTodoDueDateLabel.for = "new-todo-date";
+
+    const newTodoDueDate = document.createElement('input');
+    newTodoDueDate.type = 'date';
+    newTodoDueDate.id = "new-todo-date";
+
+    const todoButtonContainer = document.createElement('div');
+    todoButtonContainer.classList.add('todo-btn-container');
+
+    const cancelTodoButton = document.createElement('button');
+    cancelTodoButton.classList.add('cancel-todo');
+    cancelTodoButton.textContent = "Cancel";
+    cancelTodoButton.addEventListener('click', (e) => {
+        e.target.parentElement.parentElement.parentElement.style.display = "none";
+    });
+
+    const addTodoButton = document.createElement('button');
+    addTodoButton.classList.add('add-todo');
+    addTodoButton.textContent = "Save";
+    addTodoButton.addEventListener('click', (e) => {
+        //buncha shit has to happen
+        e.target.parentElement.parentElement.parentElement.style.display = "none";
+    });
+
+    todoButtonContainer.appendChild(cancelTodoButton);
+    todoButtonContainer.appendChild(addTodoButton);
+
+    newTodoForm.appendChild(newTodoNameLabel);
+    newTodoForm.appendChild(newTodoName);
+    newTodoForm.appendChild(newTodoDetailsLabel);
+    newTodoForm.appendChild(newTodoDetails);
+    newTodoForm.appendChild(newTodoDueDateLabel);
+    newTodoForm.appendChild(newTodoDueDate);
+
+    newTodoContainer.appendChild(newTodoHeading);
+    newTodoContainer.appendChild(newTodoForm);
+    newTodoContainer.appendChild(todoButtonContainer);
+
+    todoModal.appendChild(newTodoContainer);
+
+    content.appendChild(todoModal);
 }
 
 const createDeleteAlert = function(elem) {
@@ -19,8 +94,9 @@ const createDeleteAlert = function(elem) {
     alerth1.textContent = "CAUTION";
 
     const alertp = document.createElement('p');
-    alertp.textContent = "Are you sure you want to delete this project? This action cannot be undone.";
-
+    alertp.textContent = "Are you sure you want to delete this project? " + 
+        "This action cannot be undone.";
+    
     const buttonContainer = document.createElement('div');
     buttonContainer.classList.add('btn-container');
 
@@ -72,7 +148,9 @@ const createProjectButtons = function() {
     todoButton.value = "Add Todo";
     todoButton.textContent = "New To Do";
     todoButton.addEventListener('click', () => {
-
+        newTodoModal()
+        // just need title field and due date
+        // then add edit button and trash button
     });
 
     buttonContainerDiv.appendChild(deleteBtn);
@@ -124,8 +202,8 @@ const renderProjectsToDOM = function() {
         projectHeader.appendChild(projectDueDate);
 
         newProjectElem.appendChild(projectHeader);
+        newProjectElem.appendChild(projectTodosContainer);
         newProjectElem.appendChild(createProjectButtons());
-
     
         newProjectElem.addEventListener('click', () => {
             
@@ -133,7 +211,7 @@ const renderProjectsToDOM = function() {
             // use textareas? for the temporary title and details/notes section
             // use date picker input for the date
             // allow for adding To Dos ???
-        })
+        });
 
         projectGrid.appendChild(newProjectElem);    
     });

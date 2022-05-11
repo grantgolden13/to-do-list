@@ -97,7 +97,7 @@ const createSubmitBtn = function() {
     return submitBtn;
 }
 
-const createForm = function() {
+const createNewProjectForm = function() {
     const newProjectForm = document.createElement('form');
     newProjectForm.classList.add('form');
     newProjectForm.name = "new-project-form";
@@ -105,12 +105,9 @@ const createForm = function() {
     newProjectForm.method = "POST";
     newProjectForm.id = "new-project-form"
     
-    const formTitle = document.createElement('div');
-    formTitle.textContent = "New Project";
+    const formTitle = document.createElement('h2');
+    formTitle.textContent = "Add New Project";
     formTitle.classList.add('form-child');
-    
-    const nameInputLabel = document.createElement('label');
-    nameInputLabel.setAttribute('for', 'name-input');
     
     const nameInput = document.createElement('input');
     nameInput.type = "text";
@@ -120,7 +117,6 @@ const createForm = function() {
     nameInput.required = "required";
 
     newProjectForm.appendChild(formTitle);
-    newProjectForm.appendChild(nameInputLabel);
     newProjectForm.appendChild(nameInput);
     newProjectForm.appendChild(createPrioritySelector());
     newProjectForm.appendChild(createDueDateField());
@@ -133,7 +129,7 @@ const createModal = function() {
     const modal = document.createElement('div');
     modal.classList.add('modal');
 
-    modal.appendChild(createForm());
+    modal.appendChild(createNewProjectForm());
 
     return modal;
 }

@@ -4,7 +4,7 @@ const promptModal = function() {
     const modal = document.querySelector('.modal');
     modal.style.display = "block";
 
-    window.addEventListener('dblclick', (e) => {
+    window.addEventListener('click', (e) => {
         if (e.target == modal) {
             modal.style.display = "none";
         }
@@ -23,9 +23,7 @@ const createNewProject = function() {
     const newProject = new Project(projectName, projectPriority, projectDueDate);
 
     projects.push(newProject);
-    console.log(newProject, projects);
     renderProjectsToDOM();
-    
 }
 
 export { promptModal, createNewProject };

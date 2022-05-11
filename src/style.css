@@ -23,7 +23,13 @@ h1 {
 .new-project-button {
     flex: 0 1 140px;
     height: 40px;
-    font-size: 1rem;
+    font-size: 1rem;    
+}
+
+.new-project-button,
+#cancelDelete,
+.add-todo-btn,
+.cancel-todo {
     border: 2px solid goldenrod;
     color: black;
     border-radius: 12px;
@@ -45,7 +51,7 @@ h1 {
     top: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(24, 124, 224, 24%);
+    background-color: rgba(24, 124, 224, 13%);
     overflow: auto;
 }
 
@@ -60,10 +66,14 @@ form > div {
     border: 2px solid black;
     border-radius: 12px;
     justify-content: center;
-    margin: 20% auto;
+    margin: 13% auto;
     width: 340px;
-    padding: 12px 12px 24px 12px;
+    padding: 12px;
     box-shadow: 2px rgba(0, 0, 0, 0.2);
+}
+
+.form > h2 {
+    text-align: center;
 }
 
 .submit-btn {
@@ -81,12 +91,15 @@ form > div {
 
 .date-container-div {
     display: flex;
+    justify-content: space-between;
+    gap: 32px;
 }
 
 .date-container-div > label,
  .date-container-div > input {
+    box-sizing: border-box;
+    font-family: inherit;
     font-size: 1.1rem;
-    margin: 0px 24px;
 }
 
 .project-grid {
@@ -100,7 +113,7 @@ form > div {
     flex-flow: column nowrap;
     justify-content: space-between;
     border: 1px solid goldenrod;
-    border-radius: 8px;
+    border-radius: 12px;
     margin: 4px;
 }
 
@@ -146,7 +159,7 @@ header > h3 {
 .project-btn-container {
     display: flex;
     justify-content: space-between;
-    margin: 10px
+    margin: 10px;
 }
 
 .delete-modal {
@@ -156,7 +169,7 @@ header > h3 {
     top: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(24, 124, 224, 24%);
+    background-color: rgba(24, 124, 224, 13%);
     overflow: auto;
 }
 
@@ -168,7 +181,7 @@ header > h3 {
     justify-content: center;
     align-items: center;
     margin: 20% auto;
-    padding: 8px;
+    padding: 12px;
     width: 360px;
     box-shadow: 2px rgba(0, 0, 0, 0.2);
     background-color: #fcecec;
@@ -192,7 +205,10 @@ header > h3 {
 }
 
 .delete-btn,
-.add-todo-btn {
+.add-todo-btn,
+#cancelDelete,
+#deleteProject,
+.cancel-todo {
     border-radius: 12px;
     height: 32px;
     padding: 4px;
@@ -204,6 +220,44 @@ header > h3 {
     background-color: red;
 }
 
-.add-todo-btn {
-    border: 2px solid goldenrod;
-} 
+.todo-modal {
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(24, 124, 224, 13%);
+    overflow: auto;
+}
+
+.todo-container {
+    display: flex;
+    flex-flow: column nowrap;
+    border: 2px solid black;
+    border-radius: 12px;
+    justify-content: center;
+    align-items: center;
+    margin: 20% auto;
+    padding: 12px;
+    width: 260px;
+    gap: 8px;
+    box-shadow: 2px rgba(0, 0, 0, 0.2);
+    background-color: #fcecec;
+}
+
+.todo-container > h1 {
+    display: block;
+    margin: 4px;
+}
+
+#new-todo-details {
+    resize: none;
+    width: 240px;
+}
+
+.todo-btn-container {
+    width: 260px;
+    display: flex;
+    justify-content: space-between;
+}
