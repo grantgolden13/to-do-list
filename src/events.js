@@ -1,4 +1,4 @@
-import { projects, Project, renderProjectsToDOM } from './projects';
+import { projects, Project, renderProjectsToDOM, Todo } from './projects';
 
 const promptModal = function() {
     const modal = document.querySelector('.modal');
@@ -12,7 +12,6 @@ const promptModal = function() {
 };
 
 const createNewProject = function() {
-
     const projectGrid = document.createElement('div');
     projectGrid.classList.add('project-grid');
 

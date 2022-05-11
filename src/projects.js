@@ -7,7 +7,24 @@ const Project = function Project(name, priority, dueDate) {
     this.dueDate = dueDate;
 }
 
+const Todo = function Todo(name, priority, details, dueDate) {
+    this.name = name;
+    this.priority = priority;
+    this.details = details;
+    this.dueDate = dueDate;
+}
+
 const newTodoModal = function() {
+
+    // probably not in the right place but it's where i found it works
+
+    window.addEventListener('click', (e) => {
+        const todoModal = document.querySelector('.todo-modal');
+        if (e.target == todoModal) {
+            todoModal.remove();
+        }
+    });
+
     const todoModal = document.createElement('div');
     todoModal.classList.add('todo-modal');
 
@@ -60,8 +77,22 @@ const newTodoModal = function() {
     addTodoButton.classList.add('add-todo');
     addTodoButton.textContent = "Save";
     addTodoButton.addEventListener('click', (e) => {
-        // buncha shit has to happen
-        // need todo constructor like projects
+        const todosContainer = document.querySelector('.todos-container');
+        
+        const newTodoDiv = document.createElement('div');
+        newTodoDiv.classList.add('todo-div');
+        
+        const newTodoNameValue = document.createElement('div');
+        newTodoNameValue.textContent = document.getElementById('new-todo-name').value;
+
+        const newTodoDueDateValue = document.createElement('div');
+        newTodoDueDateValue.textContent = document.getElementById('new-todo-date').value;
+
+        newTodoDiv.appendChild(newTodoNameValue);
+        newTodoDiv.appendChild(newTodoDueDateValue);
+
+        todosContainer.appendChild(newTodoDiv);
+
         e.target.parentElement.parentElement.parentElement.remove();
     });
 
@@ -150,6 +181,7 @@ const createProjectButtons = function() {
     todoButton.textContent = "New To Do";
     todoButton.addEventListener('click', () => {
         newTodoModal()
+        
         // just need title field and due date
         // then add edit button and trash button
     });
@@ -229,4 +261,4 @@ const loadProjects = function() {
     renderProjectsToDOM();
 }
 
-export { projects, Project, loadProjects, renderProjectsToDOM };
+export { projects, Project, loadProjects, renderProjectsToDOM, Todo };

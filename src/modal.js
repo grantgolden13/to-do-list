@@ -32,24 +32,7 @@ const createPrioritySelector = function() {
     return prioritySelector;
 }
 
-const createDueDateField = function() {
-    const dateContainerDiv = document.createElement('div');
-    dateContainerDiv.classList.add('form-child', 'date-container-div');
-
-    const dueDateLabel = document.createElement('label');
-    dueDateLabel.textContent = "Due Date:";
-    dueDateLabel.setAttribute('for', 'due-date-selector');
-
-    const dueDate = document.createElement('input');
-    dueDate.id = "due-date-input";
-    dueDate.type = "date";
-
-    // turn this into its own function or module
-
-    var today = new Date();
-
-    // format the date so HTML tag will properly read
-    
+const formatDate = function(today) {
     var date = today.getDate();
     var month = today.getMonth() + 1;
     var year = today.getFullYear();
@@ -60,13 +43,32 @@ const createDueDateField = function() {
     if (month < 10) {
         month = '0' + month; 
     }
-
     const todayFormatted = year + '-' + month + '-' + date;
-    dueDate.setAttribute('min',`${todayFormatted}`)
-    dueDate.setAttribute('max', '2023-12-24');
+    return todayFormatted;
+}
+
+const createDueDateField = function() {
+    const dateContainerDiv = document.createElement('div');
+    dateContainerDiv.classList.add('form-child', 'date-container-div');
+
+    const dueDateLabel = document.createElement('label');
+    dueDateLabel.textContent = "Due Date:";
+    dueDateLabel.setAttribute('for', 'due-date-selector');
+
+    const dueDateSelector = document.createElement('input');
+    dueDateSelector.id = "due-date-input";
+    dueDateSelector.type = "date";
+
+    // format the date so HTML tag will properly read
+
+    var today = new Date();
+    var todayFormatted = formatDate(today);
+
+    dueDateSelector.setAttribute('min',`${todayFormatted}`);
+    dueDateSelector.setAttribute('max', '2023-12-24');
 
     dateContainerDiv.appendChild(dueDateLabel);
-    dateContainerDiv.appendChild(dueDate);
+    dateContainerDiv.appendChild(dueDateSelector);
 
     return dateContainerDiv;
 }

@@ -262,3 +262,15 @@ header > h3 {
     display: flex;
     justify-content: space-between;
 }
+
+.todos-container {
+    height: 180px;
+    display: flex;
+    flex-flow: column nowrap;
+}
+
+.todo-div {
+    display: flex;
+    justify-content: space-between;
+    border: 1px solid goldenrod;
+}
