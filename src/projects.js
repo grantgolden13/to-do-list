@@ -36,7 +36,7 @@ const newTodoModal = function() {
 
     const newTodoForm = document.createElement('form');
     newTodoForm.classList.add('todo-form');
-    newTodoForm.name = "new-todo-form";
+    newTodoForm.id = "new-todo-form";
     newTodoForm.method = "post";
     newTodoForm.action = "#";
 
@@ -47,6 +47,7 @@ const newTodoModal = function() {
     const newTodoName = document.createElement('input');
     newTodoName.id = "new-todo-name";
     newTodoName.placeholder = "'wash the dishes'";
+    newTodoName.required = "required";
 
     const newTodoDetailsLabel = document.createElement('label');
     newTodoDetailsLabel.textContent = "Details/Notes:"
@@ -62,6 +63,7 @@ const newTodoModal = function() {
     const newTodoDueDate = document.createElement('input');
     newTodoDueDate.type = 'date';
     newTodoDueDate.id = "new-todo-date";
+    newTodoDueDate.required = "";
 
     const todoButtonContainer = document.createElement('div');
     todoButtonContainer.classList.add('todo-btn-container');
@@ -76,6 +78,8 @@ const newTodoModal = function() {
     const addTodoButton = document.createElement('button');
     addTodoButton.classList.add('add-todo');
     addTodoButton.textContent = "Save";
+    addTodoButton.type = "submit";
+    addTodoButton.setAttribute('form', 'new-todo-form');
     addTodoButton.addEventListener('click', (e) => {
         const todosContainer = document.querySelector('.todos-container');
         
