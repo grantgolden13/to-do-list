@@ -81,6 +81,7 @@ const newTodoModal = function() {
     addTodoButton.type = "submit";
     addTodoButton.setAttribute('form', 'new-todo-form');
     addTodoButton.addEventListener('click', (e) => {
+        e.preventDefault();
         const todosContainer = document.querySelector('.todos-container');
         
         const newTodoDiv = document.createElement('div');
@@ -92,8 +93,16 @@ const newTodoModal = function() {
         const newTodoDueDateValue = document.createElement('div');
         newTodoDueDateValue.textContent = document.getElementById('new-todo-date').value;
 
+        const deleteTodoBtn = document.createElement('button');
+        deleteTodoBtn.id = "deleteTodo";
+        deleteTodoBtn.textContent = "X";
+        deleteTodoBtn.addEventListener('click', (e) => {
+            e.target.parentElement.remove();
+        });
+
         newTodoDiv.appendChild(newTodoNameValue);
         newTodoDiv.appendChild(newTodoDueDateValue);
+        newTodoDiv.appendChild(deleteTodoBtn);
 
         todosContainer.appendChild(newTodoDiv);
 
