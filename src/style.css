@@ -1,5 +1,5 @@
 html {
-    background-color: #D1DBEB;
+    background-color: #f5f4f0;
     min-width: 500px;
     box-sizing: border-box;
 }
@@ -10,7 +10,8 @@ header {
     align-items: center;
 }
 
-h1 {
+h1,
+h2 {
     color: goldenrod;
 }
 
@@ -71,7 +72,7 @@ form > div {
     width: 340px;
     padding: 12px;
     box-shadow: 2px rgba(0, 0, 0, 0.2);
-    background-color: #fcecec;
+    background-color: #fdf8ee;
 }
 
 .form > h2 {
@@ -246,7 +247,7 @@ header > h3 {
     width: 260px;
     gap: 8px;
     box-shadow: 2px rgba(0, 0, 0, 0.2);
-    background-color: #fcecec;
+    background-color: #fff6f6;
 }
 
 .todo-container > h1 {
