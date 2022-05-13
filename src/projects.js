@@ -185,6 +185,12 @@ const createProjectButtons = function() {
     deleteBtn.textContent = "Delete";
     deleteBtn.addEventListener('click', (e) => {
         const projectToDelete = e.target.parentElement.parentElement;
+        window.addEventListener('click', (e) => {
+            const deleteModal = document.querySelector('.delete-modal');
+            if (e.target == deleteModal) {
+                deleteModal.remove();
+            }
+        });
         createDeleteAlert(projectToDelete);
     });
 
